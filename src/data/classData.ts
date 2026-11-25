@@ -89,28 +89,27 @@ export interface GalleryItem {
 export const CLASS_DATA = {
   classInfo: {
     name: 'XII TJKT 2',
-    guildName: 'GUILD TJKT-02',
+    guildName: 'XII TJKT 2',
     program: 'Teknik Jaringan Komputer & Telekomunikasi',
-    school: 'SMK Negeri Teknologi & Jaringan',
+    school: 'SMK Negeri 1 Beringin',
     batch: 'Angkatan 2023 – 2027',
     formedAt: '2023-07-17T07:00:00+07:00',
     totalMembers: 34,
-    motto: 'Satu Kabel, Satu Sinyal, Satu Guild Sampai Lulus!',
+    motto: 'Solidaritas Tanpa Batas',
     heroBadge: 'SOLIDARITAS TANPA BATAS · ANGKATAN 2023 – 2027',
     mascotName: 'XII TJKT 2',
-    mascotTagline: 'Logo Resmi · Networking Guild',
-    shareTitle: 'XII TJKT 2 — Retro OS (Windows 98) Class Edition',
+    mascotTagline: 'SMK Negeri 1 Beringin',
+    shareTitle: 'XII TJKT 2 · SMK Negeri 1 Beringin',
     shareText:
-      'Kenalan sama kelas XII TJKT 2! Jelajahi profil kelas bergaya Retro OS Windows 98, 34 kartu anggota, roadmap kegiatan, dan galeri kenangan kami.',
-    privacyNote:
-      'Demi privasi, halaman ini tidak menampilkan nomor HP atau alamat rumah. Foto anggota hanya tampil dengan izin masing-masing.'
+      'Profil kelas, daftar 34 siswa, dan galeri kenangan XII TJKT 2 SMK Negeri 1 Beringin.',
+    privacyNote: ''
   },
 
   homeroomTeacher: {
-    name: '',
+    name: 'Wali Kelas XII TJKT 2',
     title: 'Wali Kelas',
-    subject: 'Administrasi Sistem Jaringan & Infrastruktur Cloud',
-    yearsGuiding: 'Pembimbing sejak 2023',
+    subject: 'Wali Kelas Pembimbing · SMK Negeri 1 Beringin',
+    yearsGuiding: 'Angkatan 2023 – 2027',
     photo: '/wali-kelas.jpg',
     photoConsent: true,
     spriteConfig: {
@@ -123,19 +122,19 @@ export const CLASS_DATA = {
       bgColor: '#1e294b'
     } satisfies PixelSpriteConfig,
     quote:
-      'Kabel yang putus bisa disambung lagi, konfigurasi yang salah bisa di-rollback. Yang paling berharga dari XII TJKT 2 adalah kekompakan kalian sampai gerbang kelulusan nanti.'
+      'Terima kasih atas kebersamaan, kerja keras, dan semangat belajar kalian selama di XII TJKT 2. Semoga langkah kalian ke depan selalu dimudahkan dan membawa kebanggaan.'
   },
 
   npcDialogs: [
     {
-      speaker: 'XII TJKT 2 // INFO KELAS',
-      topic: 'Siapa Kami?',
-      text: 'Halo! Selamat datang di halaman resmi XII TJKT 2. Kami adalah kelas berisi 34 siswa jurusan Teknik Jaringan Komputer & Telekomunikasi yang tumbuh bersama dari kelas X hingga tingkat akhir XII.'
+      speaker: 'PROFIL KELAS XII TJKT 2',
+      topic: 'Tentang Kami',
+      text: 'Selamat datang di halaman kelas XII TJKT 2 SMK Negeri 1 Beringin. Kelas kami terdiri dari 34 siswa jurusan Teknik Jaringan Komputer dan Telekomunikasi yang belajar dan tumbuh bersama sejak kelas X hingga kelas XII.'
     },
     {
-      speaker: 'GUILD MASTER // WALI KELAS',
-      topic: 'Misi Kelas',
-      text: 'Misi utama kami bukan cuma menaklukkan Mikrotik, Linux server, dan fiber optic di Lab 02, tetapi juga lulus Ujikom dan siap kerja atau kuliah dengan karakter yang rapi, hangat, dan saling mendukung.'
+      speaker: 'KEBERSAMAAN KELAS',
+      topic: 'Cerita Kelas',
+      text: 'Tiga tahun belajar di ruang kelas, praktik di laboratorium, hingga menjalani PKL bersama menjadi kenangan berharga sebelum kami melangkah menuju masa depan masing-masing.'
     }
   ],
 

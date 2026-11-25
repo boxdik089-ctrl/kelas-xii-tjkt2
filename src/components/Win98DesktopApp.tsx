@@ -164,19 +164,13 @@ function WinTitleControls({
 function WinExplorerHeader({
   icon,
   windowTitle,
-  tag,
   title,
-  subtitle,
-  badge,
-  onInfoAction
+  subtitle
 }: {
   icon: ReactNode;
   windowTitle: string;
-  tag: string;
   title: string;
   subtitle: string;
-  badge: string;
-  onInfoAction: (msg: string) => void;
 }) {
   return (
     <div className="win-explorer-bar">
@@ -185,15 +179,6 @@ function WinExplorerHeader({
           {icon}
           <span className="win-titlebar__title">{windowTitle}</span>
         </div>
-        <div className="win-titlebar__right">
-          <span className="lvl-pill">{badge}</span>
-          <WinTitleControls
-            label={windowTitle}
-            onMinimize={() => onInfoAction(`Jendela ${title} disematkan di Taskbar.`)}
-            onMaximize={() => onInfoAction(`Tampilan ${title} sudah optimal (lebar penuh).`)}
-            onClose={() => onInfoAction(`Gunakan navigasi Taskbar atau Start Menu untuk berpindah.`)}
-          />
-        </div>
       </div>
 
       <div className="win-explorer-intro">
@@ -201,7 +186,6 @@ function WinExplorerHeader({
           <h2>{title}</h2>
           <p>{subtitle}</p>
         </div>
-        <span className="win-badge win-badge--navy">{tag}</span>
       </div>
     </div>
   );
@@ -672,23 +656,18 @@ export default function Win98DesktopApp({ data, initialServerNow }: Win98Desktop
 
       <main id="main-content">
         {/* ================================================================= */}
-        {/* SECTION 1: HERO SIMETRIS (KIRI EMBLEM WIN98, KANAN JUDUL & 2 CTA) */}
+        {/* SECTION 1: BERANDA                                                */}
         {/* ================================================================= */}
         <section id="beranda" className="hero-stage">
           <div className="hero-container">
             <div className="hero-emblem-col">
-              <button
-                type="button"
-                className="hero-logo-btn"
-                onClick={handleMascotTap}
-                aria-label="Logo XII TJKT 2 — ketuk 5x untuk membuka rahasia"
-              >
+              <div className="hero-logo-btn">
                 <img
                   src="/logo-tjkt2.png"
-                  alt="Logo Resmi Kelas XII TJKT 2"
+                  alt="Logo Kelas XII TJKT 2"
                   className="hero-logo-floating"
                 />
-              </button>
+              </div>
             </div>
 
             <div className="hero-copy-col">
@@ -720,32 +699,20 @@ export default function Win98DesktopApp({ data, initialServerNow }: Win98Desktop
                   <span>Galeri Kenangan</span>
                 </button>
               </div>
-
-              <div className="hero-meta-strip" aria-label="Status dan lama kelas aktif">
-                <span>{apiStatus}</span>
-                <span aria-hidden="true">·</span>
-                <span>{days} HARI AKTIF</span>
-              </div>
             </div>
           </div>
         </section>
 
         {/* ================================================================= */}
-        {/* SECTION 2: TENTANG KELAS (RINGKAS, LEBAR PENUH)                   */}
+        {/* SECTION 2: TENTANG KELAS                                          */}
         {/* ================================================================= */}
         <section id="tentang" className="wide-band wide-band--alt">
           <div className="wide-inner">
             <WinExplorerHeader
               icon={<NotepadIcon className="win-titlebar__icon" />}
-              windowTitle="Exploring — Tentang XII TJKT 2"
-              tag="01 // TENTANG KELAS"
+              windowTitle="Tentang Kelas XII TJKT 2"
               title="Tentang XII TJKT 2"
-              subtitle="Catatan profil XII TJKT 2 dalam Notepad Win98 dan penghitung hari aktif kelas."
-              badge={`${data.npcDialogs.length} catatan`}
-              onInfoAction={(msg) => {
-                pixelAudio.playClick();
-                showToast(msg);
-              }}
+              subtitle={`Profil singkat dan kebersamaan kelas ${data.classInfo.name} ${data.classInfo.school}.`}
             />
 
             <div className="about-split">
@@ -754,30 +721,11 @@ export default function Win98DesktopApp({ data, initialServerNow }: Win98Desktop
                 <div className="win-titlebar">
                   <div className="win-titlebar__left">
                     <NotepadIcon className="win-titlebar__icon" />
-                    <span className="win-titlebar__title">Notepad — Tentang_Kelas.txt</span>
-                  </div>
-                  <div className="win-titlebar__right">
-                    <span className="lvl-pill">
-                      {dialogIdx + 1}/{data.npcDialogs.length}
-                    </span>
-                    <WinTitleControls
-                      label="Notepad Tentang Kelas"
-                      minimized={Boolean(minimizedWins.notepad)}
-                      onMinimize={() => toggleMinimizeWin('notepad', 'Notepad — Tentang_Kelas.txt')}
-                      onMaximize={() => {
-                        pixelAudio.playClick();
-                        openDialog(dialogIdx, true);
-                      }}
-                      onClose={() => {
-                        pixelAudio.playClick();
-                        showToast('File Tentang_Kelas.txt sedang dibuka.');
-                      }}
-                    />
+                    <span className="win-titlebar__title">Catatan Kelas</span>
                   </div>
                 </div>
 
-                {!minimizedWins.notepad && (
-                  <div className="win-body">
+                <div className="win-body">
                   <div className="win-tabs" role="tablist" aria-label="Topik catatan kelas">
                     {data.npcDialogs.map((dlg, idx) => (
                       <button
@@ -788,7 +736,7 @@ export default function Win98DesktopApp({ data, initialServerNow }: Win98Desktop
                         className={`win-tab${dialogIdx === idx ? ' is-active' : ''}`}
                         onClick={() => {
                           pixelAudio.playClick();
-                          openDialog(idx);
+                          openDialog(idx, true);
                         }}
                       >
                         {dlg.topic}
@@ -807,75 +755,28 @@ export default function Win98DesktopApp({ data, initialServerNow }: Win98Desktop
                       </div>
                       <div>
                         <div className="notepad-speaker">{data.npcDialogs[dialogIdx].speaker}</div>
-                        <p className="notepad-text" aria-live="polite">
-                          {typedText}
+                        <p className="notepad-text">
+                          {data.npcDialogs[dialogIdx].text}
                         </p>
-                      </div>
-                    </div>
-
-                    <div className="notepad-footer">
-                      <span>
-                        Halaman {dialogIdx + 1} / {data.npcDialogs.length}
-                      </span>
-                      <div className="filter-row">
-                        <button
-                          type="button"
-                          className="win-btn win-btn--sm"
-                          onClick={() => {
-                            pixelAudio.playClick();
-                            openDialog(dialogIdx, true);
-                          }}
-                        >
-                          Tampilkan Penuh
-                        </button>
-                        <button
-                          type="button"
-                          className="win-btn win-btn--sm win-btn--primary"
-                          onClick={() => {
-                            pixelAudio.playClick();
-                            openDialog(dialogIdx + 1);
-                          }}
-                        >
-                          <span>Lanjut</span>
-                          <PixelIcon name="arrowRight" className="px-icon" />
-                        </button>
                       </div>
                     </div>
                   </div>
                 </div>
-                )}
               </div>
 
-              {/* System Monitor Window */}
+              {/* Counter Window */}
               <div className="win-window">
                 <div className="win-titlebar">
                   <div className="win-titlebar__left">
                     <SysMonitorIcon className="win-titlebar__icon" />
-                    <span className="win-titlebar__title">System Monitor — Uptime.exe</span>
-                  </div>
-                  <div className="win-titlebar__right">
-                    <span className="win-badge win-badge--online">ONLINE</span>
-                    <WinTitleControls
-                      label="System Monitor Uptime.exe"
-                      minimized={Boolean(minimizedWins.sysmon)}
-                      onMinimize={() => toggleMinimizeWin('sysmon', 'System Monitor — Uptime.exe')}
-                      onMaximize={() => {
-                        pixelAudio.playClick();
-                        showToast(`Kelas telah aktif selama ${days} hari!`);
-                      }}
-                      onClose={() => {
-                        pixelAudio.playClick();
-                        showToast('System Monitor tetap memantau uptime kelas.');
-                      }}
-                    />
+                    <span className="win-titlebar__title">Waktu Kebersamaan Kelas</span>
                   </div>
                 </div>
 
-                {!minimizedWins.sysmon && (
                 <div className="win-body">
                   <div className="win-inset crt-monitor">
-                    <span className="win-badge win-badge--online">UPTIME SEJAK 17 JULI 2023</span>
-                    <h3>Penghitung Hari Kelas Aktif</h3>
+                    <span className="win-badge win-badge--online">SEJAK JULI 2023</span>
+                    <h3>Perjalanan Bersama XII TJKT 2</h3>
                     <div className="digits-grid">
                       <div className="digit-tile">
                         <strong>{pad(days, 4)}</strong>
@@ -895,56 +796,25 @@ export default function Win98DesktopApp({ data, initialServerNow }: Win98Desktop
                       </div>
                     </div>
                     <p style={{ margin: '0.75rem 0 0', fontSize: '0.82rem', color: '#cbd5e1' }}>
-                      Motto: &ldquo;{data.classInfo.motto}&rdquo;
+                      {data.classInfo.school} · {data.classInfo.batch}
                     </p>
                   </div>
                 </div>
-                )}
-              </div>
-            </div>
-
-            <div className="cheer-bar">
-              <div>
-                <span className="member-tag">GUESTBOOK PENGUNJUNG</span>
-                <p style={{ margin: '0.35rem 0 0', fontSize: '0.9rem' }}>
-                  {questLog.cheered
-                    ? `Kamu sudah mengirim ${questLog.cheersSent}x semangat: "${questLog.lastCheerMessage}"`
-                    : 'Kirim ucapan semangat untuk kelas XII TJKT 2:'}
-                </p>
-              </div>
-              <div className="filter-row">
-                {cheerPresets.slice(0, 2).map((msg) => (
-                  <button
-                    key={msg}
-                    type="button"
-                    className="win-btn win-btn--sm win-btn--green"
-                    onClick={() => void handleSendCheer(msg)}
-                  >
-                    <PixelIcon name="heart" className="px-icon" />
-                    <span>{msg}</span>
-                  </button>
-                ))}
               </div>
             </div>
           </div>
         </section>
 
         {/* ================================================================= */}
-        {/* SECTION 3: DAFTAR 34 SISWA (LEBAR PENUH 4 KOLOM DI DESKTOP)       */}
+        {/* SECTION 3: DAFTAR 34 SISWA                                        */}
         {/* ================================================================= */}
         <section id="siswa" className="wide-band">
           <div className="wide-inner">
             <WinExplorerHeader
               icon={<FolderUsersIcon className="win-titlebar__icon" />}
-              windowTitle="Exploring — Anggota XII TJKT 2"
-              tag="02 // PROFIL 34 SISWA"
+              windowTitle="Anggota Kelas XII TJKT 2"
               title="Anggota XII TJKT 2"
-              subtitle="Galeri foto dan profil 34 anggota kelas XII TJKT 2."
-              badge={`${visibleMembers.length}/${data.members.length} siswa`}
-              onInfoAction={(msg) => {
-                pixelAudio.playClick();
-                showToast(msg);
-              }}
+              subtitle="Daftar foto dan nama 34 anggota kelas XII TJKT 2."
             />
 
             <div className="members-grid">
@@ -1000,33 +870,19 @@ export default function Win98DesktopApp({ data, initialServerNow }: Win98Desktop
                 </button>
               </div>
             )}
-
-            <div className="win-statusbar" aria-label="Status Explorer anggota">
-              <span className="win-statusbar__pane win-statusbar__pane--grow">
-                Menampilkan {visibleMembers.length} dari {data.members.length} objek siswa · Klik 2x foto untuk memperbesar
-              </span>
-              <span className="win-statusbar__pane">C:\XII_TJKT2\Anggota\</span>
-              <span className="win-statusbar__pane">Siap</span>
-            </div>
           </div>
         </section>
 
         {/* ================================================================= */}
-        {/* SECTION 4: GALERI KENANGAN & ROADMAP (LEBAR PENUH)                */}
+        {/* SECTION 4: GALERI KENANGAN & PAPAN PESAN                          */}
         {/* ================================================================= */}
         <section id="kenangan" className="wide-band wide-band--alt">
           <div className="wide-inner">
             <WinExplorerHeader
               icon={<PictureGalleryIcon className="win-titlebar__icon" />}
-              windowTitle="Exploring — Galeri Kenangan Kelas"
-              tag="03 // GALERI KENANGAN"
+              windowTitle="Galeri Kenangan Kelas"
               title="Galeri Kenangan Kelas"
               subtitle={`Dokumentasi kebersamaan kelas ${data.classInfo.name}.`}
-              badge={`${filteredGallery.length} foto`}
-              onInfoAction={(msg) => {
-                pixelAudio.playClick();
-                showToast(msg);
-              }}
             />
 
             {galleryCategories.length > 2 && (
@@ -1078,13 +934,6 @@ export default function Win98DesktopApp({ data, initialServerNow }: Win98Desktop
               ))}
             </div>
 
-            <div className="win-statusbar" aria-label="Status Explorer galeri">
-              <span className="win-statusbar__pane win-statusbar__pane--grow">
-                {filteredGallery.length} file gambar (.JPG) · Klik 2x foto untuk memperbesar
-              </span>
-              <span className="win-statusbar__pane">Thumbnail View</span>
-            </div>
-
             <div className="roadmap-block">
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
                 <NotepadIcon className="px-icon" />
@@ -1099,10 +948,7 @@ export default function Win98DesktopApp({ data, initialServerNow }: Win98Desktop
                   return (
                     <li key={item.level} className={`quest-item${isActive ? ' is-active' : ''}`}>
                       <div className="quest-item__top">
-                        <div>
-                          <span className="quest-item__lvl">{item.level} </span>
-                          <span className="quest-item__date">({item.date})</span>
-                        </div>
+                        <span className="quest-item__lvl">{item.date}</span>
                         <span
                           className={`win-badge${isActive ? ' win-badge--online' : ' win-badge--navy'}`}
                         >
@@ -1120,46 +966,25 @@ export default function Win98DesktopApp({ data, initialServerNow }: Win98Desktop
         </section>
 
         {/* ================================================================= */}
-        {/* SECTION 5: STRUKTUR KELAS, KONTAK & EASTER EGG RUN                */}
+        {/* SECTION 5: STRUKTUR KELAS                                         */}
         {/* ================================================================= */}
         <section id="struktur" className="wide-band">
           <div className="wide-inner">
             <WinExplorerHeader
               icon={<NetworkGlobeIcon className="win-titlebar__icon" />}
-              windowTitle="Network Neighborhood — Struktur Kelas XII TJKT 2"
-              tag="04 // STRUKTUR & KONTAK"
+              windowTitle="Struktur Kelas XII TJKT 2"
               title="Struktur Kelas XII TJKT 2"
-              subtitle="Wali kelas, jajaran pengurus inti, tautan media sosial, serta kotak perintah rahasia Start > Run."
-              badge="NETBIOS OK"
-              onInfoAction={(msg) => {
-                pixelAudio.playClick();
-                showToast(msg);
-              }}
+              subtitle="Wali kelas dan pengurus kelas XII TJKT 2."
             />
 
             <div className="win-window" style={{ marginBottom: '1.25rem' }}>
               <div className="win-titlebar">
                 <div className="win-titlebar__left">
                   <NetworkGlobeIcon className="win-titlebar__icon" />
-                  <span className="win-titlebar__title">
-                    System Properties — Wali Kelas Pembimbing
-                  </span>
-                </div>
-                <div className="win-titlebar__right">
-                  <span className="win-badge win-badge--gold">WALI KELAS</span>
-                  <WinTitleControls
-                    label="System Properties Wali Kelas"
-                    minimized={Boolean(minimizedWins.walikelas)}
-                    onMinimize={() => toggleMinimizeWin('walikelas', 'System Properties — Wali Kelas')}
-                    onClose={() => {
-                      pixelAudio.playClick();
-                      showToast('System Properties Wali Kelas aktif.');
-                    }}
-                  />
+                  <span className="win-titlebar__title">Wali Kelas Pembimbing</span>
                 </div>
               </div>
 
-              {!minimizedWins.walikelas && (
               <div className="win-body">
                 <article className="win-inset teacher-highlight">
                   <div className="teacher-head">
@@ -1227,7 +1052,6 @@ export default function Win98DesktopApp({ data, initialServerNow }: Win98Desktop
                   </blockquote>
                 </article>
               </div>
-              )}
             </div>
 
             <div className="org-grid">
@@ -1263,96 +1087,19 @@ export default function Win98DesktopApp({ data, initialServerNow }: Win98Desktop
                     <div>
                       <span className="org-card__role">{member.role}</span>
                       {member.name && <h3 className="org-card__name">{member.name}</h3>}
-                      <span className="org-card__spec" style={{ display: 'block' }}>
-                        {member.specialty}
-                      </span>
                     </div>
                   </article>
                 );
               })}
-            </div>
-
-            <div className="hero-cta-row" style={{ justifyContent: 'flex-start', marginBottom: 0 }}>
-              <button
-                type="button"
-                className="win-btn win-btn--gold"
-                onClick={() => void handleCopyLink()}
-              >
-                <PixelIcon name="copy" className="px-icon" />
-                <span>Salin Link Halaman</span>
-              </button>
-              <button
-                type="button"
-                className="win-btn win-btn--paper"
-                onClick={() => void handleShare()}
-              >
-                <PixelIcon name="share" className="px-icon" />
-                <span>Bagikan Link</span>
-              </button>
-            </div>
-
-            <div className="social-grid">
-              {data.socialLinks.map((soc) => (
-                <a
-                  key={soc.label}
-                  href={soc.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-btn"
-                >
-                  <span className="social-btn__icon">
-                    <PixelIcon
-                      name={soc.icon as 'instagram' | 'tiktok' | 'github' | 'youtube'}
-                      className="px-icon"
-                    />
-                  </span>
-                  <span className="social-btn__info">
-                    <strong>{soc.label}</strong>
-                    <span>{soc.handle}</span>
-                  </span>
-                </a>
-              ))}
-            </div>
-
-            <div className="run-box">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.88rem' }}>
-                <RunKeyIcon className="px-icon" />
-                <span>
-                  <strong>Start &gt; Run... (Easter Egg):</strong> {data.easterEggHint}
-                </span>
-              </div>
-              <form
-                className="secret-form"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  void unlockEasterEgg(secretInput);
-                  setSecretInput('');
-                }}
-              >
-                <label htmlFor="secret-code-box" className="sr-only">
-                  Masukkan kode rahasia pada kotak Run
-                </label>
-                <input
-                  id="secret-code-box"
-                  type="text"
-                  className="win-input"
-                  placeholder="Ketik '404' atau 'tjkt2' lalu tekan OK..."
-                  value={secretInput}
-                  onChange={(e) => setSecretInput(e.target.value)}
-                />
-                <button type="submit" className="win-btn win-btn--sm win-btn--primary">
-                  OK — Jalankan
-                </button>
-              </form>
             </div>
           </div>
         </section>
 
         <footer className="site-footer">
           <p>
-            {data.classInfo.name} · {data.classInfo.program} · Retro OS Windows 98 Edition
+            {data.classInfo.name} · {data.classInfo.program} · {data.classInfo.school}
           </p>
-          <p className="site-footer__privacy">{data.classInfo.privacyNote}</p>
+          <p className="site-footer__privacy">{data.classInfo.batch}</p>
         </footer>
       </main>
 
@@ -1401,20 +1148,6 @@ export default function Win98DesktopApp({ data, initialServerNow }: Win98Desktop
             >
               <SysMonitorIcon className="px-icon" />
               <span>Wallpaper: {wallpaper.toUpperCase()}</span>
-            </button>
-
-            <button
-              type="button"
-              role="menuitem"
-              className="start-menu__item"
-              onClick={() => {
-                setStartMenuOpen(false);
-                navigateTo('struktur');
-                setTimeout(() => document.getElementById('secret-code-box')?.focus(), 250);
-              }}
-            >
-              <RunKeyIcon className="px-icon" />
-              <span>Run... (Kode Rahasia)</span>
             </button>
           </div>
         </div>
