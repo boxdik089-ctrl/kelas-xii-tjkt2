@@ -1092,6 +1092,29 @@ export default function Win98DesktopApp({ data, initialServerNow }: Win98Desktop
                 );
               })}
             </div>
+
+            <div className="social-grid">
+              {data.socialLinks.map((soc) => (
+                <a
+                  key={soc.label}
+                  href={soc.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-btn"
+                >
+                  <span className="social-btn__icon">
+                    <PixelIcon
+                      name={soc.icon as 'instagram' | 'tiktok' | 'github' | 'youtube'}
+                      className="px-icon"
+                    />
+                  </span>
+                  <span className="social-btn__info">
+                    <strong>{soc.label}</strong>
+                    <span>{soc.handle}</span>
+                  </span>
+                </a>
+              ))}
+            </div>
           </div>
         </section>
 

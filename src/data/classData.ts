@@ -967,27 +967,21 @@ export const CLASS_DATA = {
   socialLinks: [
     {
       label: 'Instagram Kelas',
-      handle: '@xii.tjkt2',
-      url: 'https://instagram.com',
+      handle: '@techoftwelve',
+      url: 'https://www.instagram.com/techoftwelve',
       icon: 'instagram'
     },
     {
-      label: 'TikTok Angkatan',
-      handle: '@tjkt2.squad',
-      url: 'https://tiktok.com',
+      label: 'TikTok Kelas',
+      handle: 'XII TJKT 2 (@techoftwelve)',
+      url: 'https://www.tiktok.com/@techoftwelve',
       icon: 'tiktok'
     },
     {
-      label: 'GitHub Proyek',
-      handle: 'github.com/xii-tjkt2',
-      url: 'https://github.com',
+      label: 'GitHub',
+      handle: 'github.com/boxdik089-ctrl',
+      url: 'https://github.com/boxdik089-ctrl',
       icon: 'github'
-    },
-    {
-      label: 'YouTube Dokumentasi',
-      handle: 'TJKT 2 Archive',
-      url: 'https://youtube.com',
-      icon: 'youtube'
     }
   ],
 
