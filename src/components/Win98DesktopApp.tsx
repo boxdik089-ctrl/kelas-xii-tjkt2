@@ -784,7 +784,7 @@ export default function Win98DesktopApp({ data, initialServerNow }: Win98Desktop
 
                 <div className="win-body">
                   <div className="win-inset crt-monitor">
-                    <span className="win-badge win-badge--online">SEJAK JULI 2023</span>
+                    <span className="win-badge win-badge--online">SEJAK JULI 2024</span>
                     <h3>Perjalanan Bersama XII TJKT 2</h3>
                     <div className="digits-grid">
                       <div className="digit-tile">
