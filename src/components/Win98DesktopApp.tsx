@@ -507,10 +507,19 @@ export default function Win98DesktopApp({ data, initialServerNow }: Win98Desktop
     [data.gallery]
   );
 
-  const pengurusMembers = useMemo(
-    () => data.members.filter((m) => m.division === 'Pengurus'),
-    [data.members]
-  );
+  const pengurusMembers = useMemo(() => {
+    const roleOrder = [
+      'Ketua Kelas',
+      'Wakil Ketua Kelas',
+      'Sekretaris',
+      'Wakil Sekretaris',
+      'Bendahara',
+      'Wakil Bendahara'
+    ];
+    return data.members
+      .filter((m) => m.division === 'Pengurus')
+      .sort((a, b) => roleOrder.indexOf(a.role) - roleOrder.indexOf(b.role));
+  }, [data.members]);
 
   const navigateTo = useCallback(
     (id: SectionId) => {
