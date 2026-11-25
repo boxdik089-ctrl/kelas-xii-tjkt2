@@ -450,26 +450,6 @@ html[data-fx='on'] .hero-logo-btn:hover {
   white-space: nowrap;
 }
 
-.led-dot {
-  width: 8px;
-  height: 8px;
-  background: #4ade80;
-  display: inline-block;
-}
-
-html[data-fx='on'] .led-dot {
-  animation: pulseLed 1.3s steps(2, end) infinite;
-}
-
-@keyframes pulseLed {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.35;
-  }
-}
-
 /* ==========================================================================
    FULL-BLEED WIDE SECTIONS (TANPA KOTAK LUAR PENGEPUNG)
    ========================================================================== */

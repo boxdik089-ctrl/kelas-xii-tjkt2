@@ -693,7 +693,6 @@ export default function Win98DesktopApp({ data, initialServerNow }: Win98Desktop
 
             <div className="hero-copy-col">
               <div className="hero-eyebrow">
-                <span className="led-dot" aria-hidden="true" />
                 <span>{data.classInfo.heroBadge}</span>
               </div>
 
@@ -723,7 +722,6 @@ export default function Win98DesktopApp({ data, initialServerNow }: Win98Desktop
               </div>
 
               <div className="hero-meta-strip" aria-label="Status dan lama kelas aktif">
-                <span className="led-dot" aria-hidden="true" />
                 <span>{apiStatus}</span>
                 <span aria-hidden="true">·</span>
                 <span>{days} HARI AKTIF</span>
