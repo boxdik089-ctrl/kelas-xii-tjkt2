@@ -96,7 +96,7 @@ export const CLASS_DATA = {
     formedAt: '2023-07-17T07:00:00+07:00',
     totalMembers: 34,
     motto: 'Satu Kabel, Satu Sinyal, Satu Guild Sampai Lulus!',
-    heroBadge: 'WIN98 RETRO OS · LAB JARINGAN 02',
+    heroBadge: 'SOLIDARITAS TANPA BATAS · ANGKATAN 2023 – 2027',
     mascotName: 'XII TJKT 2',
     mascotTagline: 'Logo Resmi · Networking Guild',
     shareTitle: 'XII TJKT 2 — Retro OS (Windows 98) Class Edition',

@@ -697,11 +697,7 @@ export default function Win98DesktopApp({ data, initialServerNow }: Win98Desktop
                 <span>{data.classInfo.heroBadge}</span>
               </div>
 
-              <h1 className="hero-display-title">
-                BUKU KENANGAN
-                <br />
-                DIGITAL
-              </h1>
+              <h1 className="hero-display-title">XII TJKT 2</h1>
 
               <p className="hero-subtitle">{data.classInfo.program.toUpperCase()}</p>
 
