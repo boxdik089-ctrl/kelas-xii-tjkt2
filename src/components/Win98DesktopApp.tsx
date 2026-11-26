@@ -607,7 +607,6 @@ export default function Win98DesktopApp({ data, initialServerNow }: Win98Desktop
     try {
       localStorage.setItem('tjkt2_win98_theme', next ? 'dark' : 'classic');
     } catch {}
-    showToast(next ? 'Mode Gelap Retro OS aktif.' : 'Mode Klasik Win98 aktif.');
   }
 
   function cycleWallpaper() {
