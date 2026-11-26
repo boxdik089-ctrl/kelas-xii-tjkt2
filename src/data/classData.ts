@@ -506,7 +506,7 @@ export const CLASS_DATA = {
     },
     {
       id: 'tjkt2-23',
-      name: 'HENDRA RIKKI',
+      name: 'HENDRA RIKKI DAMANIK',
       nickname: '',
       rpgClass: 'Herald Messenger',
       role: 'Ketua Kelas',
