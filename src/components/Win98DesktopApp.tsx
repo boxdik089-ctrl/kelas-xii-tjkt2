@@ -210,6 +210,7 @@ export default function Win98DesktopApp({ data, initialServerNow }: Win98Desktop
 
   // Members Roster
   const [showAllMembers, setShowAllMembers] = useState(false);
+  const restoredScrollRef = useRef(false);
 
   // Gallery & Photo Lightbox
   const [activeGalleryCat, setActiveGalleryCat] = useState('Semua');
@@ -326,7 +327,55 @@ export default function Win98DesktopApp({ data, initialServerNow }: Win98Desktop
     return () => clearInterval(id);
   }, []);
 
-  // Scroll tracking
+  // Scroll tracking & state restoration across page refresh
+  useEffect(() => {
+    let shouldShowAll = false;
+    let savedScrollY: number | null = null;
+    let savedSection: SectionId | null = null;
+
+    try {
+      if (sessionStorage.getItem('tjkt2_show_all_members') === '1') {
+        shouldShowAll = true;
+        setShowAllMembers(true);
+      }
+      const rawY = sessionStorage.getItem('tjkt2_scroll_y');
+      if (rawY !== null) {
+        const parsedY = Number(rawY);
+        if (!Number.isNaN(parsedY) && parsedY > 0) savedScrollY = parsedY;
+      }
+      const rawSec = sessionStorage.getItem('tjkt2_active_section') as SectionId | null;
+      if (rawSec && SECTIONS.some((s) => s.id === rawSec)) {
+        savedSection = rawSec;
+      }
+    } catch {}
+
+    const hashId = window.location.hash.replace('#', '') as SectionId;
+    const targetSection =
+      hashId && SECTIONS.some((s) => s.id === hashId) ? hashId : savedSection;
+
+    if (targetSection) {
+      setActiveSection(targetSection);
+    }
+
+    const restorePosition = () => {
+      if (savedScrollY !== null && savedScrollY > 0) {
+        window.scrollTo({ top: savedScrollY, behavior: 'auto' });
+      } else if (targetSection && targetSection !== 'beranda') {
+        document.getElementById(targetSection)?.scrollIntoView({ behavior: 'auto' });
+      }
+      restoredScrollRef.current = true;
+    };
+
+    // Wait a tick if showAllMembers expanded the DOM height
+    if (shouldShowAll) {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(restorePosition);
+      });
+    } else {
+      requestAnimationFrame(restorePosition);
+    }
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY + 180;
@@ -338,9 +387,14 @@ export default function Win98DesktopApp({ data, initialServerNow }: Win98Desktop
         }
       }
       setActiveSection(current);
+      if (restoredScrollRef.current) {
+        try {
+          sessionStorage.setItem('tjkt2_scroll_y', String(Math.round(window.scrollY)));
+          sessionStorage.setItem('tjkt2_active_section', current);
+        } catch {}
+      }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -526,6 +580,14 @@ export default function Win98DesktopApp({ data, initialServerNow }: Win98Desktop
       pixelAudio.playClick();
       setStartMenuOpen(false);
       setActiveSection(id);
+      try {
+        sessionStorage.setItem('tjkt2_active_section', id);
+        window.history.replaceState(
+          null,
+          '',
+          id === 'beranda' ? window.location.pathname : `#${id}`
+        );
+      } catch {}
       requestAnimationFrame(() => {
         document.getElementById(id)?.scrollIntoView({
           behavior: fxOn ? 'smooth' : 'auto'
@@ -870,7 +932,13 @@ export default function Win98DesktopApp({ data, initialServerNow }: Win98Desktop
                   className="win-btn win-btn--gold"
                   onClick={() => {
                     pixelAudio.playClick();
-                    setShowAllMembers((prev) => !prev);
+                    setShowAllMembers((prev) => {
+                      const next = !prev;
+                      try {
+                        sessionStorage.setItem('tjkt2_show_all_members', next ? '1' : '0');
+                      } catch {}
+                      return next;
+                    });
                   }}
                 >
                   {showAllMembers
