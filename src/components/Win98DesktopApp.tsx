@@ -1002,7 +1002,17 @@ export default function Win98DesktopApp({ data, initialServerNow }: Win98Desktop
                 >
                   <div className="inv-media">
                     {item.image ? (
-                      <img src={item.image} alt={item.title} loading="lazy" />
+                      item.image.endsWith('.mp4') ? (
+                        <video
+                          src={item.image}
+                          muted
+                          playsInline
+                          preload="metadata"
+                          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                        />
+                      ) : (
+                        <img src={item.image} alt={item.title} loading="lazy" />
+                      )
                     ) : (
                       <PixelScene scene={item.scene} title={item.title} />
                     )}
@@ -1323,7 +1333,11 @@ export default function Win98DesktopApp({ data, initialServerNow }: Win98Desktop
                 <PictureGalleryIcon className="win-titlebar__icon" />
                 <span id="lightbox-modal-title" className="win-titlebar__title">
                   Image Preview — {activeGalleryItem.id}
-                  {activeGalleryItem.image ? '.JPG' : '.BMP'}
+                  {activeGalleryItem.image
+                    ? activeGalleryItem.image.endsWith('.mp4')
+                      ? '.MP4'
+                      : '.JPG'
+                    : '.BMP'}
                 </span>
               </div>
               <WinTitleControls
@@ -1355,7 +1369,17 @@ export default function Win98DesktopApp({ data, initialServerNow }: Win98Desktop
                 }}
               >
                 {activeGalleryItem.image ? (
-                  <img src={activeGalleryItem.image} alt={activeGalleryItem.title} />
+                  activeGalleryItem.image.endsWith('.mp4') ? (
+                    <video
+                      src={activeGalleryItem.image}
+                      controls
+                      autoPlay
+                      playsInline
+                      style={{ maxWidth: '100%', maxHeight: '72vh', display: 'block', margin: '0 auto' }}
+                    />
+                  ) : (
+                    <img src={activeGalleryItem.image} alt={activeGalleryItem.title} />
+                  )
                 ) : (
                   <PixelScene
                     scene={activeGalleryItem.scene || 'gathering'}
