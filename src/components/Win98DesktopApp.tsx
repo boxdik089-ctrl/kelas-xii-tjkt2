@@ -566,9 +566,7 @@ export default function Win98DesktopApp({ data, initialServerNow }: Win98Desktop
       'Ketua Kelas',
       'Wakil Ketua Kelas',
       'Sekretaris',
-      'Wakil Sekretaris',
-      'Bendahara',
-      'Wakil Bendahara'
+      'Bendahara'
     ];
     return data.members
       .filter((m) => m.division === 'Pengurus')
