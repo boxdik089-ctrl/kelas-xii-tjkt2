@@ -981,6 +981,16 @@ export const CLASS_DATA = {
       scene: 'gathering',
       image: '/gallery/kenangan-25.jpeg',
       caption: 'Dokumentasi kebersamaan kelas XII TJKT 2. Klik foto untuk melihat ukuran penuh.'
+    },
+    {
+      id: 'MEM-026',
+      title: 'Video Kenangan #26',
+      category: 'Kenangan',
+      rarity: 'MYTHIC',
+      date: '26 November 2026',
+      scene: 'gathering',
+      image: '/gallery/kenangan-26.mp4',
+      caption: 'Video kebersamaan kelas XII TJKT 2. Klik 2x untuk memutar video.'
     }
   ] satisfies GalleryItem[],
 
