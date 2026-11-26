@@ -198,7 +198,7 @@ export const CLASS_DATA = {
   members: [
     {
       id: 'tjkt2-01',
-      name: 'YULIANA A. MASROKIM',
+      name: 'YUANA INDRIANI',
       nickname: '',
       rpgClass: 'Guild Knight',
       role: 'Anggota Kelas',
@@ -226,7 +226,7 @@ export const CLASS_DATA = {
     },
     {
       id: 'tjkt2-03',
-      name: 'MUHAMMAD REZHAQ ZACKY',
+      name: 'M. REFLAND ZACKY',
       nickname: '',
       rpgClass: 'Lore Scribe',
       role: 'Anggota Kelas',
@@ -240,7 +240,7 @@ export const CLASS_DATA = {
     },
     {
       id: 'tjkt2-04',
-      name: 'ALVINO GHO FAHRY',
+      name: 'ALVINO GIO FAHRI',
       nickname: '',
       rpgClass: 'Vault Keeper',
       role: 'Anggota Kelas',
@@ -254,7 +254,7 @@ export const CLASS_DATA = {
     },
     {
       id: 'tjkt2-05',
-      name: 'RACHEL PETRUS NAIBAHO',
+      name: 'RACEL PETRUS',
       nickname: '',
       rpgClass: 'Scroll Clerk',
       role: 'Anggota Kelas',
@@ -268,7 +268,7 @@ export const CLASS_DATA = {
     },
     {
       id: 'tjkt2-06',
-      name: 'ADYA K NUR AENI',
+      name: 'ADYA KHARISMA NUR AENI',
       nickname: '',
       rpgClass: 'Gold Steward',
       role: 'Anggota Kelas',
@@ -282,7 +282,7 @@ export const CLASS_DATA = {
     },
     {
       id: 'tjkt2-07',
-      name: 'M.SYAWAL DWI DARMA',
+      name: 'M. SYAWAL DWI DARMA',
       nickname: '',
       rpgClass: 'Router Mage',
       role: 'Spesialis Mikrotik',
@@ -296,7 +296,7 @@ export const CLASS_DATA = {
     },
     {
       id: 'tjkt2-08',
-      name: 'MUHAMMAD FAJAR ANOMAL',
+      name: 'M. FAJAR ANDIKA',
       nickname: '',
       rpgClass: 'Fiber Enchanter',
       role: 'Wakil Ketua Kelas',
@@ -324,7 +324,7 @@ export const CLASS_DATA = {
     },
     {
       id: 'tjkt2-10',
-      name: 'KEYSA AURA PUTRI',
+      name: 'KESYA AURA PUTRI',
       nickname: '',
       rpgClass: 'Switch Tactician',
       role: 'Admin VLAN & Switch',
@@ -338,7 +338,7 @@ export const CLASS_DATA = {
     },
     {
       id: 'tjkt2-11',
-      name: 'KHIRANA QISTI',
+      name: 'KIRANA QISTI',
       nickname: '',
       rpgClass: 'Signal Scout',
       role: 'Teknisi Wireless',
@@ -352,7 +352,7 @@ export const CLASS_DATA = {
     },
     {
       id: 'tjkt2-12',
-      name: 'KHESDA A. PRATAMA',
+      name: 'KENZIE ADITYA',
       nickname: '',
       rpgClass: 'Subnet Scholar',
       role: 'Taktisi IP Address',
@@ -380,7 +380,7 @@ export const CLASS_DATA = {
     },
     {
       id: 'tjkt2-14',
-      name: 'MHD KEVIN AL-DAFFA',
+      name: 'M. KEVIN ALDAFFA',
       nickname: '',
       rpgClass: 'Cipher Guardian',
       role: 'Keamanan Jaringan',
@@ -436,7 +436,7 @@ export const CLASS_DATA = {
     },
     {
       id: 'tjkt2-18',
-      name: 'HENDRA R.S. SIMANJUNTAK',
+      name: 'IGNASIUS PUTRA',
       nickname: '',
       rpgClass: 'Hardware Medic',
       role: 'Perakit & Teknisi PC',
@@ -450,7 +450,7 @@ export const CLASS_DATA = {
     },
     {
       id: 'tjkt2-19',
-      name: 'DIO ANDIKA PRATAMA',
+      name: 'DIO ANDIKA',
       nickname: '',
       rpgClass: 'Pixel Artisan',
       role: 'Sekretaris',
@@ -464,7 +464,7 @@ export const CLASS_DATA = {
     },
     {
       id: 'tjkt2-20',
-      name: 'FEBRI ARTA SINATRIO',
+      name: 'FEBRI ARTA SINANTRIO',
       nickname: '',
       rpgClass: 'Chronicle Bard',
       role: 'Fotografer & Dokumentasi',
@@ -478,7 +478,7 @@ export const CLASS_DATA = {
     },
     {
       id: 'tjkt2-21',
-      name: '',
+      name: 'DIKA ARMADANA',
       nickname: '',
       rpgClass: 'Sprite Crafter',
       role: 'Desainer Grafis',
@@ -492,7 +492,7 @@ export const CLASS_DATA = {
     },
     {
       id: 'tjkt2-22',
-      name: 'KRISNA J.R PRAMANA',
+      name: 'KRISNA JJ PRAMANA',
       nickname: '',
       rpgClass: 'Motion Illusionist',
       role: 'Editor Video',
@@ -506,7 +506,7 @@ export const CLASS_DATA = {
     },
     {
       id: 'tjkt2-23',
-      name: 'HENDRA RIKKI DAMANIK',
+      name: 'HENDRA RIKKI',
       nickname: '',
       rpgClass: 'Herald Messenger',
       role: 'Ketua Kelas',
@@ -548,7 +548,7 @@ export const CLASS_DATA = {
     },
     {
       id: 'tjkt2-26',
-      name: 'RENA J. SIPAYUNG',
+      name: 'RENA JULIA NINGSIH',
       nickname: '',
       rpgClass: 'Camp Healer',
       role: 'Wakil Bendahara',
@@ -576,7 +576,7 @@ export const CLASS_DATA = {
     },
     {
       id: 'tjkt2-28',
-      name: 'SAAMUEL STIVEN S',
+      name: 'SAMUEL STIVEN',
       nickname: '',
       rpgClass: 'Guild Diplomat',
       role: 'MC & Presenter',
@@ -590,7 +590,7 @@ export const CLASS_DATA = {
     },
     {
       id: 'tjkt2-29',
-      name: 'HUSEA FRADINUS',
+      name: 'HUSEA PRADINUS',
       nickname: '',
       rpgClass: 'Rack Warden',
       role: 'Penjaga Infrastruktur Lab',
@@ -604,7 +604,7 @@ export const CLASS_DATA = {
     },
     {
       id: 'tjkt2-30',
-      name: 'HALINNIO BALQIS',
+      name: 'HALINIO BALQIS',
       nickname: '',
       rpgClass: 'Spirit Bard',
       role: 'Penyemangat Kelas',
@@ -618,7 +618,7 @@ export const CLASS_DATA = {
     },
     {
       id: 'tjkt2-31',
-      name: 'ARDYANTO SIMBOLON',
+      name: 'ARDIYANTO SIMBOLON',
       nickname: '',
       rpgClass: 'Telecom Scout',
       role: 'Teknisi VoIP',
@@ -632,7 +632,7 @@ export const CLASS_DATA = {
     },
     {
       id: 'tjkt2-32',
-      name: 'M AULIA RAHMAN',
+      name: 'M. AULIA RAHMAN',
       nickname: '',
       rpgClass: 'Order Keeper',
       role: 'Koordinator 5R Lab',
@@ -646,7 +646,7 @@ export const CLASS_DATA = {
     },
     {
       id: 'tjkt2-33',
-      name: 'DELA WIDIYA RISMA',
+      name: 'DELA WIDYA RISMA',
       nickname: '',
       rpgClass: 'Backup Paladin',
       role: 'Tim Recovery Sistem',
