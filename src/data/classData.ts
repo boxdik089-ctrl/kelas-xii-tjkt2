@@ -901,6 +901,86 @@ export const CLASS_DATA = {
       scene: 'gathering',
       image: '/gallery/kenangan-17.mp4',
       caption: 'Video kebersamaan kelas XII TJKT 2. Klik 2x untuk memutar video.'
+    },
+    {
+      id: 'MEM-018',
+      title: 'Momen Kenangan #18',
+      category: 'Kenangan',
+      rarity: 'LEGENDARY',
+      date: '23 November 2026',
+      scene: 'gathering',
+      image: '/gallery/kenangan-18.jpeg',
+      caption: 'Dokumentasi kebersamaan kelas XII TJKT 2. Klik foto untuk melihat ukuran penuh.'
+    },
+    {
+      id: 'MEM-019',
+      title: 'Momen Kenangan #19',
+      category: 'Kenangan',
+      rarity: 'EPIC',
+      date: '23 November 2026',
+      scene: 'gathering',
+      image: '/gallery/kenangan-19.jpeg',
+      caption: 'Dokumentasi kebersamaan kelas XII TJKT 2. Klik foto untuk melihat ukuran penuh.'
+    },
+    {
+      id: 'MEM-020',
+      title: 'Momen Kenangan #20',
+      category: 'Kenangan',
+      rarity: 'RARE',
+      date: '23 November 2026',
+      scene: 'gathering',
+      image: '/gallery/kenangan-20.jpeg',
+      caption: 'Dokumentasi kebersamaan kelas XII TJKT 2. Klik foto untuk melihat ukuran penuh.'
+    },
+    {
+      id: 'MEM-021',
+      title: 'Momen Kenangan #21',
+      category: 'Kenangan',
+      rarity: 'LEGENDARY',
+      date: '23 November 2026',
+      scene: 'gathering',
+      image: '/gallery/kenangan-21.jpeg',
+      caption: 'Dokumentasi kebersamaan kelas XII TJKT 2. Klik foto untuk melihat ukuran penuh.'
+    },
+    {
+      id: 'MEM-022',
+      title: 'Momen Kenangan #22',
+      category: 'Kenangan',
+      rarity: 'EPIC',
+      date: '23 November 2026',
+      scene: 'gathering',
+      image: '/gallery/kenangan-22.jpeg',
+      caption: 'Dokumentasi kebersamaan kelas XII TJKT 2. Klik foto untuk melihat ukuran penuh.'
+    },
+    {
+      id: 'MEM-023',
+      title: 'Momen Kenangan #23',
+      category: 'Kenangan',
+      rarity: 'RARE',
+      date: '23 November 2026',
+      scene: 'gathering',
+      image: '/gallery/kenangan-23.jpeg',
+      caption: 'Dokumentasi kebersamaan kelas XII TJKT 2. Klik foto untuk melihat ukuran penuh.'
+    },
+    {
+      id: 'MEM-024',
+      title: 'Momen Kenangan #24',
+      category: 'Kenangan',
+      rarity: 'EPIC',
+      date: '23 November 2026',
+      scene: 'gathering',
+      image: '/gallery/kenangan-24.jpeg',
+      caption: 'Dokumentasi kebersamaan kelas XII TJKT 2. Klik foto untuk melihat ukuran penuh.'
+    },
+    {
+      id: 'MEM-025',
+      title: 'Momen Kenangan #25',
+      category: 'Kenangan',
+      rarity: 'MYTHIC',
+      date: '23 November 2026',
+      scene: 'gathering',
+      image: '/gallery/kenangan-25.jpeg',
+      caption: 'Dokumentasi kebersamaan kelas XII TJKT 2. Klik foto untuk melihat ukuran penuh.'
     }
   ] satisfies GalleryItem[],
 
