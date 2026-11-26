@@ -106,7 +106,7 @@ export const CLASS_DATA = {
   },
 
   homeroomTeacher: {
-    name: 'Wali Kelas XII TJKT 2',
+    name: 'Sabarina Br Munte, S. Kom',
     title: 'Wali Kelas',
     subject: 'Wali Kelas Pembimbing · SMK Negeri 1 Beringin',
     yearsGuiding: 'Angkatan 2024 – 2027',
